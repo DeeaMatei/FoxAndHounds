@@ -16,7 +16,16 @@
 - Daca vulpea este blocata de Lupi (nu se mai poate muta) atunci Lupii castiga jocul 🏴
 - Daca vulpea ajunge in capatul celalalt al tablei castiga. 🚩
 
-## Clase :white_square_button::red_circle:
+## Context :white_square_button::red_circle:
+### Meniu principal 📝
+- 3 moduri de joc: 2 playeri local, 2 playeri LAN, player vs. computer
+- Instructiuni
+- Buton Exit
+
+### Joc 🎮
+- Tabla - 8x8 alb-negru
+- O piesa Vulpe
+- 4 Piese Lup
 
 ### Link :link:
 https://en.wikipedia.org/wiki/Fox_games#Fox_and_Hounds
