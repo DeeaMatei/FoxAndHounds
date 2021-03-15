@@ -1,4 +1,4 @@
-# Fox And Hounds :wolf: & :fox_face:
+# Fox And Hounds :fox_face:&:wolf:
 ----
 ## Reguli 
 
