@@ -27,5 +27,17 @@
 - O piesa Vulpe
 - 4 Piese Lup
 
+### Clase 🥇
+- Board ⬛
+- Piece ♟️
+ - Fox 🦊
+ - Hound 🐺
+- Referee 🎅
+- Player:Enum
+- Game 🏁
+ - PcGame 💻
+ - PvpGame 🧑‍🤝‍🧑
+ - LanGame 🖥️-🌎-🖥️
+
 ### Link :link:
 https://en.wikipedia.org/wiki/Fox_games#Fox_and_Hounds
