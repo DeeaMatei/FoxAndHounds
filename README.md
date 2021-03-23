@@ -29,7 +29,7 @@
 
 ### Clase 🥇
 - Board ⬛
-- Piece ♟️
+- IPiece ♟️
  - Fox 🦊
  - Hound 🐺
 - Referee 🎅
