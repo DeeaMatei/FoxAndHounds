@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FoxAndHounds
 {
-    public partial class Form1 : Form
+    public partial class ConnectScreen : Form
     {
-        public Form1()
+        public ConnectScreen()
         {
             InitializeComponent();
         }
