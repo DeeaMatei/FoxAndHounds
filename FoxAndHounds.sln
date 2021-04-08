@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxAndHounds", "FoxAndHounds.csproj", "{3854B854-BFCA-4574-AFFF-B5DF2DBDE99B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxAndHounds", "FoxAndHounds\FoxAndHounds.csproj", "{3854B854-BFCA-4574-AFFF-B5DF2DBDE99B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxAndHounds.Classes", "..\FoxAndHound.Classes\FoxAndHounds.Classes.csproj", "{DF7C672F-954A-465B-8257-DC8C509B558A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxAndHounds.Classes", "FoxAndHounds.Classes\FoxAndHounds.Classes.csproj", "{DF7C672F-954A-465B-8257-DC8C509B558A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
