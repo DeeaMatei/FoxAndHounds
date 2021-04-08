@@ -39,6 +39,7 @@
  - PvpGame 🧑‍🤝‍🧑
  - LanGame 🖥️-🌎-🖥️
 - Layout 📐
+![Class Diagram](https://user-images.githubusercontent.com/59807073/114028890-a5839800-9881-11eb-97ea-feb0691f15eb.jpg)
 
 ### Link :link:
 https://en.wikipedia.org/wiki/Fox_games#Fox_and_Hounds
