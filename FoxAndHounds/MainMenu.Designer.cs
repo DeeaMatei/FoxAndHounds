@@ -120,7 +120,7 @@ namespace FoxAndHounds
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainMenu";
-            this.Text = "Fox && Hounds";
+            this.Text = "Fox & Hounds";
             this.ResumeLayout(false);
             this.PerformLayout();
 
