@@ -17,7 +17,8 @@ namespace FoxAndHound.Classes.Implementations
 
         public Bitmap GetImage()
         {
-            throw new NotImplementedException();
+            Bitmap bitmap = new Bitmap(Resources.fox);
+            return bitmap;
         }
     }
 }

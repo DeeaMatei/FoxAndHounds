@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FoxAndHound.Classes.Implementations;
 
 namespace FoxAndHounds
 {
@@ -15,6 +16,9 @@ namespace FoxAndHounds
         public MainScreen()
         {
             InitializeComponent();
+            Board board = new Board();
+            board.Location = new Point(40, 15);
+            this.Controls.Add(board);
         }
     }
 }

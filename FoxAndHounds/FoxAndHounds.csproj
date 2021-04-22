@@ -106,5 +106,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FoxAndHounds.Classes\FoxAndHounds.Classes.csproj">
+      <Project>{df7c672f-954a-465b-8257-dc8c509b558a}</Project>
+      <Name>FoxAndHounds.Classes</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
