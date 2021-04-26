@@ -11,7 +11,6 @@ namespace FoxAndHound.Classes.Implementations
         public int SquareSize { get; set; }
         public Layout BoardLayout { get; set; }
         public List<Position> AvailableMoves { get; set; }
-        Layout IBoard.Layout { get; set; }
 
         public event MoveProposed OnMoveProposed;
 
@@ -24,6 +23,8 @@ namespace FoxAndHound.Classes.Implementations
 
         protected override void OnClick(EventArgs eventArgs)
         {
+            Point point = PointToClient(MousePosition);
+            Console.WriteLine(point.X + " " +point.Y);
         }
 
         protected override void OnPaint(PaintEventArgs paintEventArgs)
@@ -39,13 +40,13 @@ namespace FoxAndHound.Classes.Implementations
             {
                 if (i % 2 == 0)
                 {
-                    color1 = Color.Black;
-                    color2 = Color.DarkOliveGreen;
+                    color2 = Color.Black;
+                    color1 = Color.DarkOliveGreen;
                 }
                 else
                 {
-                    color1 = Color.DarkOliveGreen;
-                    color2 = Color.Black;
+                    color2 = Color.DarkOliveGreen;
+                    color1 = Color.Black;
                 }
                 SolidBrush blackBrush = new SolidBrush(color1);
                 SolidBrush whiteBrush = new SolidBrush(color2);
@@ -62,14 +63,10 @@ namespace FoxAndHound.Classes.Implementations
 
         public void DrawPieces(Graphics graphics)
         {
-            Hound hound = new Hound();
-            Fox fox = new Fox();
-
-            graphics.DrawImage(fox.GetImage(), 80, 0, SquareSize, SquareSize);
-            graphics.DrawImage(hound.GetImage(), 160, 0, SquareSize, SquareSize);
-            graphics.DrawImage(hound.GetImage(), 240, 0, SquareSize, SquareSize);
-            graphics.DrawImage(hound.GetImage(), 320, 0, SquareSize, SquareSize);
-            graphics.DrawImage(hound.GetImage(), 400, 0, SquareSize, SquareSize);
+            foreach (var piece in BoardLayout.Arrangement)
+            {
+                graphics.DrawImage(piece.Value.GetImage(), piece.Key.X * SquareSize, piece.Key.Y * SquareSize, SquareSize, SquareSize);
+            }
         }
 
         public void DrawAvailableMoves(Graphics graphics)

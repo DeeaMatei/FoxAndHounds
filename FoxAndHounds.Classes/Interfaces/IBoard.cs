@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FoxAndHound.Classes.Interfaces
 {
@@ -14,7 +15,7 @@ namespace FoxAndHound.Classes.Interfaces
     }
     public interface IBoard
     {
-        Layout Layout { get; set; }
+        Layout BoardLayout { get; set; }
         event MoveProposed OnMoveProposed;
     }
 }

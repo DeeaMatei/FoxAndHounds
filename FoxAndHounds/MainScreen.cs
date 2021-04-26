@@ -7,18 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FoxAndHound.Classes;
 using FoxAndHound.Classes.Implementations;
 
 namespace FoxAndHounds
 {
     public partial class MainScreen : Form
     {
+        Board board;
+        PvpLocal game;
+
         public MainScreen()
         {
             InitializeComponent();
-            Board board = new Board();
+            board = new Board();
             board.Location = new Point(40, 15);
             this.Controls.Add(board);
+            game = new PvpLocal(board);
+            game.Initialize();
         }
     }
 }
