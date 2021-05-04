@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FoxAndHound.Classes.Implementations;
+﻿using FoxAndHound.Classes.Implementations;
 using FoxAndHound.Classes.Interfaces;
+using System.Collections.Generic;
 
 namespace FoxAndHound.Classes
 {
@@ -16,12 +12,14 @@ namespace FoxAndHound.Classes
         {
             Arrangement = new Dictionary<Position, IPiece>();
         }
-        public void MovePiece(Move move) 
+
+        public void MovePiece(Move move)
         {
             Arrangement.Remove(move.Start);
             Arrangement.Add(move.Destination, move.Piece);
         }
-        public void Initialize() 
+
+        public void Initialize()
         {
             Arrangement.Add(new Position(4, 7), new Fox());
             Arrangement.Add(new Position(1, 0), new Hound());

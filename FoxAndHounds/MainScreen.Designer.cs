@@ -39,7 +39,7 @@ namespace FoxAndHounds
             this.labelCurrentPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCurrentPlayer.Location = new System.Drawing.Point(821, 66);
             this.labelCurrentPlayer.Name = "labelCurrentPlayer";
-            this.labelCurrentPlayer.Size = new System.Drawing.Size(79, 29);
+            this.labelCurrentPlayer.Size = new System.Drawing.Size(51, 20);
             this.labelCurrentPlayer.TabIndex = 0;
             this.labelCurrentPlayer.Text = "label1";
             // 
@@ -53,6 +53,7 @@ namespace FoxAndHounds
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainScreen";
             this.ResumeLayout(false);
             this.PerformLayout();

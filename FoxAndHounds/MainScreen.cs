@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FoxAndHound.Classes;
+﻿using FoxAndHound.Classes;
 using FoxAndHound.Classes.Implementations;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace FoxAndHounds
 {
     public partial class MainScreen : Form
     {
-        Board board;
-        PvpLocal game;
+        private Board board;
+        private PvpLocal game;
 
         public MainScreen()
         {
@@ -30,7 +23,7 @@ namespace FoxAndHounds
             this.DoubleBuffered = true;
         }
 
-        public void OnTurnChange (Player currentMovingPlayer)
+        public void OnTurnChange(Player currentMovingPlayer)
         {
             labelCurrentPlayer.Text = currentMovingPlayer.ToString() + "'s turn";
         }

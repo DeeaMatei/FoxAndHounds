@@ -1,18 +1,18 @@
-﻿using System;
-using System.Windows.Forms;
-using FoxAndHound.Classes.Implementations;
+﻿using FoxAndHound.Classes.Implementations;
 using FoxAndHound.Classes.Interfaces;
+using System.Windows.Forms;
 
 namespace FoxAndHound.Classes
 {
     public delegate void TurnChanged(Player currentMovingPlayer);
+
     public class Referee
     {
-        public event TurnChanged OnTurnChange;
         public Layout Layout { get; set; }
         public IBoard Board { get; set; }
         public Player CurrentMovingPlayer { get; set; }
 
+        public event TurnChanged OnTurnChange;
 
         public Referee(IBoard board)
         {
@@ -46,7 +46,6 @@ namespace FoxAndHound.Classes
                     ChangeTurn();
                 }
             }
-
         }
 
         public void UpdateLayout(Move move)

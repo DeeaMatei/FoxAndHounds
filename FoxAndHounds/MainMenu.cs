@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FoxAndHounds
@@ -30,8 +23,8 @@ namespace FoxAndHounds
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
-            if (helpScreen != null) 
-            { 
+            if (helpScreen != null)
+            {
                 helpScreen.Close();
             }
             if (mainScreen != null)
@@ -47,19 +40,29 @@ namespace FoxAndHounds
         private void btnVsComputer_Click(object sender, EventArgs e)
         {
             mainScreen = new MainScreen();
+            mainScreen.FormClosed += OnMainFormClosed;
             mainScreen.Show();
+            this.Hide();
         }
 
         private void btnPvpLocal_Click(object sender, EventArgs e)
         {
             mainScreen = new MainScreen();
+            mainScreen.FormClosed += OnMainFormClosed;
             mainScreen.Show();
+            this.Hide();
         }
 
         private void btnPvpLan_Click(object sender, EventArgs e)
         {
             connectScreen = new ConnectScreen();
             connectScreen.Show();
+            this.Hide();
+        }
+
+        public void OnMainFormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
 }

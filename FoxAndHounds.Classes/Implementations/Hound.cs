@@ -1,10 +1,6 @@
-﻿using System;
+﻿using FoxAndHound.Classes.Interfaces;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FoxAndHound.Classes.Interfaces;
 
 namespace FoxAndHound.Classes.Implementations
 {
@@ -16,7 +12,7 @@ namespace FoxAndHound.Classes.Implementations
             if (currentPosition.Y < 7)
             {
                 Position availablePosition = new Position(currentPosition.X - 1, currentPosition.Y + 1);
-                if (currentPosition.X-1 >= 0 && !currentLayout.Arrangement.ContainsKey(availablePosition))
+                if (currentPosition.X - 1 >= 0 && !currentLayout.Arrangement.ContainsKey(availablePosition))
                 {
                     availableMoves.Add(availablePosition);
                 }

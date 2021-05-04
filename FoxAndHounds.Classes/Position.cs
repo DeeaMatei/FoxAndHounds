@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FoxAndHound.Classes
+﻿namespace FoxAndHound.Classes
 {
     public class Position
     {
@@ -17,7 +11,6 @@ namespace FoxAndHound.Classes
             Y = y;
         }
 
-        
         public override int GetHashCode()
         {
             int hashCode = 1861411795;
