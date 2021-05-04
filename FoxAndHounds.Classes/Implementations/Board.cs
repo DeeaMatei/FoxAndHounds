@@ -23,6 +23,7 @@ namespace FoxAndHound.Classes.Implementations
             this.Height = 640;
             this.Width = 640;
             SquareSize = 80;
+            this.DoubleBuffered = true;
         }
 
         protected override void OnClick(EventArgs eventArgs)

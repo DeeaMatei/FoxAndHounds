@@ -27,6 +27,7 @@ namespace FoxAndHounds
             game.Referee.OnTurnChange += this.OnTurnChange;
             game.Initialize();
             game.Start();
+            this.DoubleBuffered = true;
         }
 
         public void OnTurnChange (Player currentMovingPlayer)
