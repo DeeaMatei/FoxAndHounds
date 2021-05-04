@@ -18,6 +18,8 @@ namespace FoxAndHound.Classes
         }
         public void MovePiece(Move move) 
         {
+            Arrangement.Remove(move.Start);
+            Arrangement.Add(move.Destination, move.Piece);
         }
         public void Initialize() 
         {

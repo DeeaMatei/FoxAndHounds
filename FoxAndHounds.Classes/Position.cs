@@ -16,5 +16,21 @@ namespace FoxAndHound.Classes
             X = x;
             Y = y;
         }
+
+        
+        public override int GetHashCode()
+        {
+            int hashCode = 1861411795;
+            hashCode = hashCode * -1521134295 + X.GetHashCode();
+            hashCode = hashCode * -1521134295 + Y.GetHashCode();
+            return hashCode;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Position position &&
+                   X == position.X &&
+                   Y == position.Y;
+        }
     }
 }

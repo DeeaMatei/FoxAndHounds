@@ -11,6 +11,7 @@ namespace FoxAndHound.Classes
         public Referee(IBoard board)
         {
             Board = board;
+            Board.OnMoveProposed += this.OnMoveProposed;
             Layout = new Layout();
         }
 
@@ -27,10 +28,17 @@ namespace FoxAndHound.Classes
 
         public void OnMoveProposed(object sender, MoveProposedEventArgs moveProposedEventArgs)
         {
+            if (moveProposedEventArgs.Move.Piece.GetAvailableMoves(moveProposedEventArgs.Move.Start, Layout).Contains(moveProposedEventArgs.Move.Destination))
+            {
+                UpdateLayout(moveProposedEventArgs.Move);
+                Board.Redraw();
+            }
         }
 
-        public void UpdateLayout()
+        public void UpdateLayout(Move move)
         {
+            Layout.MovePiece(move);
+            Board.BoardLayout = Layout;
         }
 
         public bool CheckEndGame()
@@ -40,6 +48,7 @@ namespace FoxAndHound.Classes
 
         public void ChangeTurn()
         {
+
         }
     }
 }

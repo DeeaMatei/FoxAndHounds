@@ -12,7 +12,22 @@ namespace FoxAndHound.Classes.Implementations
     {
         public List<Position> GetAvailableMoves(Position currentPosition, Layout currentLayout)
         {
-            throw new NotImplementedException();
+            List<Position> availableMoves = new List<Position>();
+            if (currentPosition.Y < 7)
+            {
+                Position availablePosition = new Position(currentPosition.X - 1, currentPosition.Y + 1);
+                if (currentPosition.X-1 >= 0 && !currentLayout.Arrangement.ContainsKey(availablePosition))
+                {
+                    availableMoves.Add(availablePosition);
+                }
+                availablePosition = new Position(currentPosition.X + 1, currentPosition.Y + 1);
+                if (currentPosition.X + 1 <= 7 && !currentLayout.Arrangement.ContainsKey(availablePosition))
+                {
+                    availableMoves.Add(availablePosition);
+                }
+            }
+
+            return availableMoves;
         }
 
         public Bitmap GetImage()

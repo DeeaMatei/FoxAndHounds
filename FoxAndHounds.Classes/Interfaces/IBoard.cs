@@ -17,5 +17,7 @@ namespace FoxAndHound.Classes.Interfaces
     {
         Layout BoardLayout { get; set; }
         event MoveProposed OnMoveProposed;
+
+        void Redraw();
     }
 }

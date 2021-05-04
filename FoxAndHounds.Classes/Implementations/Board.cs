@@ -12,6 +12,8 @@ namespace FoxAndHound.Classes.Implementations
         public Layout BoardLayout { get; set; }
         public List<Position> AvailableMoves { get; set; }
 
+        public Move Move { get; set; }
+
         public event MoveProposed OnMoveProposed;
 
         public Board()
@@ -23,8 +25,32 @@ namespace FoxAndHound.Classes.Implementations
 
         protected override void OnClick(EventArgs eventArgs)
         {
+            Redraw();
             Point point = PointToClient(MousePosition);
-            Console.WriteLine(point.X + " " +point.Y);
+            Console.WriteLine(point.X/SquareSize + " " +point.Y/SquareSize);
+            Position position = new Position(point.X / SquareSize, point.Y / SquareSize);
+            if (BoardLayout.Arrangement.ContainsKey(position))
+            {
+                Move = new Move();
+                Move.Start = position;
+                Move.Piece = BoardLayout.Arrangement[position];
+                DrawAvailableMoves(this.CreateGraphics(), Move.Piece.GetAvailableMoves(position, BoardLayout));
+            }
+            else
+            {
+                if (Move!=null)
+                {
+                    if (Move.Start!=null)
+                    {
+                        Move.Destination = position;
+                        MoveProposedEventArgs moveProposedEventArgs = new MoveProposedEventArgs();
+                        moveProposedEventArgs.Move = Move;
+                        OnMoveProposed?.Invoke(this, moveProposedEventArgs);
+                        Move = null;
+                    }
+                }
+            }
+
         }
 
         protected override void OnPaint(PaintEventArgs paintEventArgs)
@@ -69,8 +95,19 @@ namespace FoxAndHound.Classes.Implementations
             }
         }
 
-        public void DrawAvailableMoves(Graphics graphics)
+        public void DrawAvailableMoves(Graphics graphics, List<Position> availablePositions)
         {
+            Color color = Color.Red;
+            Pen pen = new Pen(color);
+            foreach (var position in availablePositions)
+            {
+                graphics.DrawRectangle(pen, position.X * SquareSize, position.Y * SquareSize, SquareSize, SquareSize);
+            }
+        }
+
+        public void Redraw()
+        {
+            this.Refresh();
         }
     }
 }
