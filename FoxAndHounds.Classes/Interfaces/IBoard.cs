@@ -16,6 +16,7 @@ namespace FoxAndHound.Classes.Interfaces
     public interface IBoard
     {
         Layout BoardLayout { get; set; }
+        Player CurrentMovingPlayer { get; set; }
         event MoveProposed OnMoveProposed;
 
         void Redraw();

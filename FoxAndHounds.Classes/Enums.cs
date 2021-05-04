@@ -8,8 +8,8 @@ namespace FoxAndHound.Classes
 {
     public enum Player
     {
-        Player1,
-        Player2
+        Fox,
+        Hounds
     }
 
     public enum Status

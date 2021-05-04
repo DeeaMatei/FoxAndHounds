@@ -10,7 +10,6 @@ namespace FoxAndHound.Classes
     public class PvpLocal : IGame
     {
         public Referee Referee { get; set; }
-        public Player CurrentMovingPlayer { get; set; }
         public Status Outcome { get; set; }
 
         public PvpLocal(IBoard board)
@@ -25,7 +24,7 @@ namespace FoxAndHound.Classes
 
         public void Start()
         {
-            Referee.StartGame(CurrentMovingPlayer);
+            Referee.StartGame();
         }
     }
 }

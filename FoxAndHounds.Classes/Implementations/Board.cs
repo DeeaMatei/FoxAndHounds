@@ -14,6 +14,8 @@ namespace FoxAndHound.Classes.Implementations
 
         public Move Move { get; set; }
 
+        public Player CurrentMovingPlayer { get; set; }
+
         public event MoveProposed OnMoveProposed;
 
         public Board()
@@ -34,13 +36,16 @@ namespace FoxAndHound.Classes.Implementations
                 Move = new Move();
                 Move.Start = position;
                 Move.Piece = BoardLayout.Arrangement[position];
-                DrawAvailableMoves(this.CreateGraphics(), Move.Piece.GetAvailableMoves(position, BoardLayout));
+                if ((Move.Piece.GetType().Equals(typeof(Hound)) && CurrentMovingPlayer == Player.Hounds) || (Move.Piece.GetType().Equals(typeof(Fox)) && CurrentMovingPlayer == Player.Fox))
+                {
+                    DrawAvailableMoves(this.CreateGraphics(), Move.Piece.GetAvailableMoves(position, BoardLayout));
+                }
             }
             else
             {
-                if (Move!=null)
+                if (Move != null)
                 {
-                    if (Move.Start!=null)
+                    if (Move.Start != null)
                     {
                         Move.Destination = position;
                         MoveProposedEventArgs moveProposedEventArgs = new MoveProposedEventArgs();

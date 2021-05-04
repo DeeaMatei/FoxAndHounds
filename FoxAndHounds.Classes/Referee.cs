@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Windows.Forms;
+using FoxAndHound.Classes.Implementations;
 using FoxAndHound.Classes.Interfaces;
 
 namespace FoxAndHound.Classes
 {
+    public delegate void TurnChanged(Player currentMovingPlayer);
     public class Referee
     {
+        public event TurnChanged OnTurnChange;
         public Layout Layout { get; set; }
         public IBoard Board { get; set; }
+        public Player CurrentMovingPlayer { get; set; }
+
 
         public Referee(IBoard board)
         {
@@ -21,18 +27,26 @@ namespace FoxAndHound.Classes
             Board.BoardLayout = Layout;
         }
 
-        public void StartGame(Player currentMovingPlayer)
+        public void StartGame()
         {
-            currentMovingPlayer = Player.Player1;
+            CurrentMovingPlayer = Player.Fox;
+            Board.CurrentMovingPlayer = CurrentMovingPlayer;
+            OnTurnChange?.Invoke(CurrentMovingPlayer);
         }
 
         public void OnMoveProposed(object sender, MoveProposedEventArgs moveProposedEventArgs)
         {
-            if (moveProposedEventArgs.Move.Piece.GetAvailableMoves(moveProposedEventArgs.Move.Start, Layout).Contains(moveProposedEventArgs.Move.Destination))
+            if ((moveProposedEventArgs.Move.Piece.GetType().Equals(typeof(Hound)) && CurrentMovingPlayer == Player.Hounds) || (moveProposedEventArgs.Move.Piece.GetType().Equals(typeof(Fox)) && CurrentMovingPlayer == Player.Fox))
             {
-                UpdateLayout(moveProposedEventArgs.Move);
-                Board.Redraw();
+                if (moveProposedEventArgs.Move.Piece.GetAvailableMoves(moveProposedEventArgs.Move.Start, Layout).Contains(moveProposedEventArgs.Move.Destination))
+                {
+                    UpdateLayout(moveProposedEventArgs.Move);
+                    Board.Redraw();
+                    CheckEndGame();
+                    ChangeTurn();
+                }
             }
+
         }
 
         public void UpdateLayout(Move move)
@@ -41,14 +55,29 @@ namespace FoxAndHound.Classes
             Board.BoardLayout = Layout;
         }
 
-        public bool CheckEndGame()
+        public void CheckEndGame()
         {
-            throw new NotImplementedException();
+            foreach (var piece in Layout.Arrangement)
+            {
+                if (piece.Value.GetType().Equals(typeof(Fox)))
+                {
+                    if (piece.Value.GetAvailableMoves(piece.Key, Layout).Count.Equals(0))
+                    {
+                        MessageBox.Show("Hounds win!!!");
+                    }
+                    else if (piece.Key.Y.Equals(0))
+                    {
+                        MessageBox.Show("Fox wins!!!");
+                    }
+                }
+            }
         }
 
         public void ChangeTurn()
         {
-
+            CurrentMovingPlayer = CurrentMovingPlayer == Player.Fox ? Player.Hounds : Player.Fox;
+            Board.CurrentMovingPlayer = CurrentMovingPlayer;
+            OnTurnChange?.Invoke(CurrentMovingPlayer);
         }
     }
 }

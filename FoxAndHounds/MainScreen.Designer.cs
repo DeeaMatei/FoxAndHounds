@@ -30,12 +30,24 @@ namespace FoxAndHounds
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
+            this.labelCurrentPlayer = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // labelCurrentPlayer
+            // 
+            this.labelCurrentPlayer.AutoSize = true;
+            this.labelCurrentPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrentPlayer.Location = new System.Drawing.Point(821, 66);
+            this.labelCurrentPlayer.Name = "labelCurrentPlayer";
+            this.labelCurrentPlayer.Size = new System.Drawing.Size(79, 29);
+            this.labelCurrentPlayer.TabIndex = 0;
+            this.labelCurrentPlayer.Text = "label1";
             // 
             // MainScreen
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1058, 664);
+            this.Controls.Add(this.labelCurrentPlayer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -43,9 +55,12 @@ namespace FoxAndHounds
             this.Name = "MainScreen";
             this.Text = "MainScreen";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label labelCurrentPlayer;
     }
 }

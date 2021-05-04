@@ -9,7 +9,6 @@ namespace FoxAndHound.Classes
     public interface IGame
     {
         Referee Referee { get; set; }
-        Player CurrentMovingPlayer { get; set; }
         Status Outcome { get; set; }
 
         void Initialize();
