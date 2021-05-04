@@ -41,17 +41,18 @@ namespace FoxAndHounds
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(402, 85);
+            this.label1.Font = new System.Drawing.Font("Calibri", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(276, 55);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 49);
+            this.label1.Size = new System.Drawing.Size(269, 54);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fox && Hounds";
             // 
             // btnVsComputer
             // 
             this.btnVsComputer.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVsComputer.Location = new System.Drawing.Point(432, 208);
+            this.btnVsComputer.Location = new System.Drawing.Point(272, 142);
             this.btnVsComputer.Name = "btnVsComputer";
             this.btnVsComputer.Size = new System.Drawing.Size(188, 64);
             this.btnVsComputer.TabIndex = 1;
@@ -62,7 +63,7 @@ namespace FoxAndHounds
             // btnPvpLocal
             // 
             this.btnPvpLocal.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPvpLocal.Location = new System.Drawing.Point(432, 310);
+            this.btnPvpLocal.Location = new System.Drawing.Point(272, 235);
             this.btnPvpLocal.Name = "btnPvpLocal";
             this.btnPvpLocal.Size = new System.Drawing.Size(188, 64);
             this.btnPvpLocal.TabIndex = 2;
@@ -73,7 +74,7 @@ namespace FoxAndHounds
             // btnPvpLan
             // 
             this.btnPvpLan.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPvpLan.Location = new System.Drawing.Point(432, 410);
+            this.btnPvpLan.Location = new System.Drawing.Point(272, 333);
             this.btnPvpLan.Name = "btnPvpLan";
             this.btnPvpLan.Size = new System.Drawing.Size(188, 64);
             this.btnPvpLan.TabIndex = 3;
@@ -84,7 +85,7 @@ namespace FoxAndHounds
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(842, 580);
+            this.btnExit.Location = new System.Drawing.Point(294, 598);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(150, 42);
             this.btnExit.TabIndex = 4;
@@ -95,7 +96,7 @@ namespace FoxAndHounds
             // btnInstructions
             // 
             this.btnInstructions.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInstructions.Location = new System.Drawing.Point(390, 534);
+            this.btnInstructions.Location = new System.Drawing.Point(227, 528);
             this.btnInstructions.Name = "btnInstructions";
             this.btnInstructions.Size = new System.Drawing.Size(280, 42);
             this.btnInstructions.TabIndex = 5;
@@ -106,7 +107,7 @@ namespace FoxAndHounds
             // MainMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1058, 664);
+            this.ClientSize = new System.Drawing.Size(698, 664);
             this.Controls.Add(this.btnInstructions);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnPvpLan);
