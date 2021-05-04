@@ -56,6 +56,7 @@
     <Compile Include="Interfaces\IPiece.cs" />
     <Compile Include="Layout.cs" />
     <Compile Include="Move.cs" />
+    <Compile Include="NetworkClient.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implementations\PvpLocal.cs" />

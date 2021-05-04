@@ -1,16 +1,22 @@
 ﻿using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
 
 namespace FoxAndHounds.Server
 {
     public class NetworkServer
     {
-        public NetworkServer()
+        public TcpListener TcpListener { get; set; }
+        public NetworkServer(Int32 port)
         {
+            var ipAddress = Dns.GetHostEntry(Dns.GetHostName()).AddressList[0];
+            TcpListener = new TcpListener(ipAddress, port);
         }
 
         public void StartServer()
         {
-            throw new NotImplementedException();
+            TcpListener.Start();
         }
 
         public void AcceptConnection()
@@ -31,6 +37,11 @@ namespace FoxAndHounds.Server
         public void Disconnect()
         {
             throw new NotImplementedException();
+        }
+
+        public void StopServer()
+        {
+            TcpListener.Stop();
         }
     }
 }

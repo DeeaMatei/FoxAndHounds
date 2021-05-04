@@ -40,63 +40,70 @@ namespace FoxAndHounds.Server
             // 
             this.labelIp.AutoSize = true;
             this.labelIp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIp.Location = new System.Drawing.Point(12, 31);
+            this.labelIp.Location = new System.Drawing.Point(16, 38);
+            this.labelIp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelIp.Name = "labelIp";
-            this.labelIp.Size = new System.Drawing.Size(229, 25);
+            this.labelIp.Size = new System.Drawing.Size(343, 37);
             this.labelIp.TabIndex = 0;
             this.labelIp.Text = "IP: XXX.XXX.XXX.XXX";
             // 
             // textBoxPort
             // 
             this.textBoxPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPort.Location = new System.Drawing.Point(362, 28);
+            this.textBoxPort.Location = new System.Drawing.Point(483, 34);
+            this.textBoxPort.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPort.Name = "textBoxPort";
-            this.textBoxPort.Size = new System.Drawing.Size(85, 31);
+            this.textBoxPort.Size = new System.Drawing.Size(112, 43);
             this.textBoxPort.TabIndex = 3;
-            this.textBoxPort.Text = "XXXX";
+            this.textBoxPort.Text = "8000";
             // 
             // labelPort
             // 
             this.labelPort.AutoSize = true;
             this.labelPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPort.Location = new System.Drawing.Point(299, 31);
+            this.labelPort.Location = new System.Drawing.Point(399, 38);
+            this.labelPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPort.Name = "labelPort";
-            this.labelPort.Size = new System.Drawing.Size(57, 25);
+            this.labelPort.Size = new System.Drawing.Size(85, 37);
             this.labelPort.TabIndex = 2;
             this.labelPort.Text = "Port:";
             // 
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(533, 27);
+            this.btnStart.Location = new System.Drawing.Point(711, 33);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(159, 32);
+            this.btnStart.Size = new System.Drawing.Size(212, 39);
             this.btnStart.TabIndex = 1;
             this.btnStart.Text = "Start server";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(12, 80);
+            this.richTextBox1.Location = new System.Drawing.Point(16, 98);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(680, 369);
+            this.richTextBox1.Size = new System.Drawing.Size(905, 453);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "---------------------------------------------------------- Server logs ----------" +
     "------------------------------------------------";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 461);
+            this.ClientSize = new System.Drawing.Size(939, 567);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.labelPort);
             this.Controls.Add(this.textBoxPort);
             this.Controls.Add(this.labelIp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";

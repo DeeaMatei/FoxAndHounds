@@ -68,7 +68,7 @@ namespace FoxAndHound.Classes.Implementations
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    SolidBrush brush = (i + j) % 2 == 0 ? new SolidBrush(Color.DarkOliveGreen) : new SolidBrush(Color.Black);
+                    var brush = (i + j) % 2 == 0 ? Brushes.DarkOliveGreen: Brushes.Black;
 
                     graphics.FillRectangle(brush, i * SquareSize, j * SquareSize, SquareSize, SquareSize);
                 }
