@@ -32,16 +32,8 @@ namespace FoxAndHounds.Server
                 labelServerOn.Text = "Server is running.";
                 labelStatusColor.BackColor = Color.Green;
                 btnStart.Text = "Stop Server";
-                NetworkServer.AcceptConnection().ContinueWith(callback =>
-                {
-                    textLogs.Text += Environment.NewLine + "Client " + callback.Result.ToString() + " connected!";
-                    NetworkServer.AcceptConnection().ContinueWith(callback2 =>
-                    {
-                        textLogs.Text += Environment.NewLine + "Client " + callback2.Result.ToString() + " connected!";
-                    });
-                });
-
                 textLogs.Text += "\r\n Server listening on: " + NetworkServer.TcpListener.LocalEndpoint;
+                NetworkServer.AcceptConnection();
             }
             else
             {

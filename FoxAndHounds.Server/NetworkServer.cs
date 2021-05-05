@@ -8,9 +8,11 @@ namespace FoxAndHounds.Server
     public class NetworkServer
     {
         public TcpListener TcpListener { get; set; }
+        public TcpClient Client1 { get; set; }
+        public TcpClient Client2 { get; set; }
         public NetworkServer(Int32 port)
         {
-            var ipAddress = Dns.GetHostEntry(Dns.GetHostName()).AddressList[0];
+            var ipAddress = IPAddress.Any;
             TcpListener = new TcpListener(ipAddress, port);
         }
 
@@ -19,9 +21,10 @@ namespace FoxAndHounds.Server
             TcpListener.Start();
         }
 
-        public void AcceptConnection()
+        public async void AcceptConnection()
         {
-            throw new NotImplementedException();
+            Client1 = await TcpListener.AcceptTcpClientAsync();
+            //Client2 = await TcpListener.AcceptTcpClientAsync();
         }
 
         public string Read()
