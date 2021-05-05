@@ -37,14 +37,15 @@ namespace FoxAndHounds.Server
             return 0;
         }
 
-        public string Read()
+        public async Task TransferData()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Send(string textToSend)
-        {
-            throw new NotImplementedException();
+            NetworkStream networkStream1 = Client1.GetStream();
+            NetworkStream networkStream2 = Client2.GetStream();
+            while (Client1.Connected && Client2.Connected)
+            {
+                await networkStream1.CopyToAsync(networkStream2);
+                await networkStream2.CopyToAsync(networkStream1);
+            }
         }
 
         public void Disconnect()

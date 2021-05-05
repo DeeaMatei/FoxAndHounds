@@ -78,5 +78,10 @@ namespace FoxAndHound.Classes
             Board.CurrentMovingPlayer = CurrentMovingPlayer;
             OnTurnChange?.Invoke(CurrentMovingPlayer);
         }
+
+        public void OnDataRead(string data)
+        {
+
+        }
     }
 }
