@@ -40,7 +40,7 @@ namespace FoxAndHounds
         private void btnVsComputer_Click(object sender, EventArgs e)
         {
             mainScreen = new MainScreen();
-            mainScreen.FormClosed += OnMainFormClosed;
+            mainScreen.FormClosed += OnFormsClosed;
             mainScreen.Show();
             this.Hide();
         }
@@ -48,7 +48,7 @@ namespace FoxAndHounds
         private void btnPvpLocal_Click(object sender, EventArgs e)
         {
             mainScreen = new MainScreen();
-            mainScreen.FormClosed += OnMainFormClosed;
+            mainScreen.FormClosed += OnFormsClosed;
             mainScreen.Show();
             this.Hide();
         }
@@ -56,11 +56,12 @@ namespace FoxAndHounds
         private void btnPvpLan_Click(object sender, EventArgs e)
         {
             connectScreen = new ConnectScreen();
+            connectScreen.FormClosed += OnFormsClosed;
             connectScreen.Show();
             this.Hide();
         }
 
-        public void OnMainFormClosed(object sender, FormClosedEventArgs e)
+        public void OnFormsClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
         }

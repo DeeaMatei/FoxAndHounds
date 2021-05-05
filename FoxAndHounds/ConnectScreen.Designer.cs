@@ -40,26 +40,29 @@ namespace FoxAndHounds
             // textIp
             // 
             this.textIp.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textIp.Location = new System.Drawing.Point(254, 81);
+            this.textIp.Location = new System.Drawing.Point(190, 66);
+            this.textIp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textIp.Name = "textIp";
-            this.textIp.Size = new System.Drawing.Size(196, 44);
+            this.textIp.Size = new System.Drawing.Size(148, 32);
             this.textIp.TabIndex = 0;
             // 
             // textPort
             // 
             this.textPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textPort.Location = new System.Drawing.Point(254, 165);
+            this.textPort.Location = new System.Drawing.Point(190, 134);
+            this.textPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textPort.Name = "textPort";
-            this.textPort.Size = new System.Drawing.Size(196, 44);
+            this.textPort.Size = new System.Drawing.Size(148, 32);
             this.textPort.TabIndex = 1;
             // 
             // labelIp
             // 
             this.labelIp.AutoSize = true;
             this.labelIp.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIp.Location = new System.Drawing.Point(43, 88);
+            this.labelIp.Location = new System.Drawing.Point(32, 72);
+            this.labelIp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelIp.Name = "labelIp";
-            this.labelIp.Size = new System.Drawing.Size(182, 37);
+            this.labelIp.Size = new System.Drawing.Size(125, 26);
             this.labelIp.TabIndex = 2;
             this.labelIp.Text = "IP Address:";
             // 
@@ -67,18 +70,20 @@ namespace FoxAndHounds
             // 
             this.labelPort.AutoSize = true;
             this.labelPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPort.Location = new System.Drawing.Point(140, 168);
+            this.labelPort.Location = new System.Drawing.Point(105, 136);
+            this.labelPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPort.Name = "labelPort";
-            this.labelPort.Size = new System.Drawing.Size(85, 37);
+            this.labelPort.Size = new System.Drawing.Size(58, 26);
             this.labelPort.TabIndex = 3;
             this.labelPort.Text = "Port:";
             // 
             // btnConnect
             // 
             this.btnConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnect.Location = new System.Drawing.Point(183, 260);
+            this.btnConnect.Location = new System.Drawing.Point(137, 211);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(156, 60);
+            this.btnConnect.Size = new System.Drawing.Size(117, 49);
             this.btnConnect.TabIndex = 4;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -86,9 +91,9 @@ namespace FoxAndHounds
             // 
             // ConnectScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 363);
+            this.ClientSize = new System.Drawing.Size(392, 295);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.labelPort);
             this.Controls.Add(this.labelIp);
@@ -96,8 +101,9 @@ namespace FoxAndHounds
             this.Controls.Add(this.textIp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ConnectScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConnectScreen";
             this.ResumeLayout(false);
             this.PerformLayout();
