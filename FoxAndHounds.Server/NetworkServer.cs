@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FoxAndHounds.Server
 {
@@ -21,10 +22,19 @@ namespace FoxAndHounds.Server
             TcpListener.Start();
         }
 
-        public async void AcceptConnection()
+        public async Task<int> AcceptConnection()
         {
-            Client1 = await TcpListener.AcceptTcpClientAsync();
-            //Client2 = await TcpListener.AcceptTcpClientAsync();
+            if (Client1 == null)
+            {
+                Client1 = await TcpListener.AcceptTcpClientAsync();
+                return 1;
+            }
+            else if (Client2 == null)
+            {
+                Client2 = await TcpListener.AcceptTcpClientAsync();
+                return 2;
+            }
+            return 0;
         }
 
         public string Read()
