@@ -39,7 +39,9 @@ namespace FoxAndHounds.Server
                     NetworkServer.AcceptConnection().ContinueWith(result2 =>
                     {
                         textLogs.Text += Environment.NewLine + "Client " + result2.Result + " connected!";
+                        NetworkServer.StartGame();
                         NetworkServer.TransferData();
+
                     });
                 });
             }

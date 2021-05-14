@@ -7,13 +7,14 @@ namespace FoxAndHound.Classes
         public Referee Referee { get; set; }
         public Status Outcome { get; set; }
 
-        public PvpLocal(IBoard board)
+        public PvpLocal()
         {
-            Referee = new Referee(board);
+            
         }
 
-        public void Initialize()
+        public void Initialize(IBoard board)
         {
+            Referee = new Referee(board);
             Referee.Initialize();
         }
 

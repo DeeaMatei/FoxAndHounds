@@ -1,4 +1,5 @@
 ﻿using System;
+using FoxAndHound.Classes.Interfaces;
 
 namespace FoxAndHound.Classes.Implementations
 {
@@ -8,7 +9,7 @@ namespace FoxAndHound.Classes.Implementations
         public Player CurrentMovingPlayer { get; set; }
         public Status Outcome { get; set; }
 
-        public void Initialize()
+        public void Initialize(IBoard board)
         {
             throw new NotImplementedException();
         }

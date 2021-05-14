@@ -1,4 +1,5 @@
 ﻿using System;
+using FoxAndHound.Classes.Interfaces;
 
 namespace FoxAndHound.Classes.Implementations
 {
@@ -8,14 +9,21 @@ namespace FoxAndHound.Classes.Implementations
         public Status Outcome { get; set; }
         public NetworkClient NetworkClient { get; set; }
 
-        public void Initialize()
+        public LanGame(NetworkClient client)
         {
+            NetworkClient = client;
+        }
+
+        public void Initialize(IBoard board)
+        {
+            Referee = new Referee(board);
             NetworkClient.OnDataRead += Referee.OnDataRead;
+            Referee.Initialize();
         }
 
         public void Start()
         {
-            throw new NotImplementedException();
+            Referee.StartGame();
         }
     }
 }

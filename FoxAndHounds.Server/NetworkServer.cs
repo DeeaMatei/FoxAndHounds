@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -35,6 +36,15 @@ namespace FoxAndHounds.Server
                 return 2;
             }
             return 0;
+        }
+
+        public void StartGame()
+        {
+            string start = "start";
+            BinaryWriter binaryWriter1 = new BinaryWriter(Client1.GetStream());
+            BinaryWriter binaryWriter2 = new BinaryWriter(Client2.GetStream());
+            binaryWriter1.Write(start);
+            binaryWriter2.Write(start);
         }
 
         public async Task TransferData()

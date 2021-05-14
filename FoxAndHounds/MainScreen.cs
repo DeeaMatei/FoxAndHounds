@@ -8,18 +8,18 @@ namespace FoxAndHounds
     public partial class MainScreen : Form
     {
         private Board board;
-        private PvpLocal game;
+        public IGame game;
 
-        public MainScreen()
+        public MainScreen(IGame game)
         {
             InitializeComponent();
+            this.game = game;
             board = new Board();
             board.Location = new Point(40, 15);
             this.Controls.Add(board);
-            game = new PvpLocal(board);
-            game.Referee.OnTurnChange += this.OnTurnChange;
-            game.Initialize();
-            game.Start();
+            this.game.Initialize(board);
+            this.game.Referee.OnTurnChange += this.OnTurnChange;
+            this.game.Start();
             this.DoubleBuffered = true;
         }
 

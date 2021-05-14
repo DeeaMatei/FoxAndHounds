@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using FoxAndHound.Classes;
+using FoxAndHound.Classes.Implementations;
 
 namespace FoxAndHounds
 {
@@ -39,7 +41,7 @@ namespace FoxAndHounds
 
         private void btnVsComputer_Click(object sender, EventArgs e)
         {
-            mainScreen = new MainScreen();
+            mainScreen = new MainScreen(new PcGame());
             mainScreen.FormClosed += OnFormsClosed;
             mainScreen.Show();
             this.Hide();
@@ -47,7 +49,7 @@ namespace FoxAndHounds
 
         private void btnPvpLocal_Click(object sender, EventArgs e)
         {
-            mainScreen = new MainScreen();
+            mainScreen = new MainScreen(new PvpLocal());
             mainScreen.FormClosed += OnFormsClosed;
             mainScreen.Show();
             this.Hide();
@@ -58,12 +60,22 @@ namespace FoxAndHounds
             connectScreen = new ConnectScreen();
             connectScreen.FormClosed += OnFormsClosed;
             connectScreen.Show();
+            connectScreen.networkClient.OnGameStarted += this.OnGameStarted;
             this.Hide();
         }
 
         public void OnFormsClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
+        }
+
+        public void OnGameStarted(NetworkClient client)
+        {
+            mainScreen = new MainScreen(new LanGame(client));
+            mainScreen.FormClosed += OnFormsClosed;
+            connectScreen.Hide();
+            mainScreen.Show();
+            this.Hide();
         }
     }
 }
