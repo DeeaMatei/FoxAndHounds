@@ -26,7 +26,7 @@ namespace FoxAndHound.Classes
 
         public void Connect(string IP, Int32 port)
         {
-            TcpClient.Connect(IPAddress.Parse(IP), port);
+            TcpClient.ConnectAsync(IPAddress.Parse(IP), port);
         }
 
         public async Task Write(string data)
@@ -40,10 +40,14 @@ namespace FoxAndHound.Classes
 
         public async Task Read()
         {
+            var stream = TcpClient.GetStream();
+            var bytes = new byte[10];
             BinaryReader binaryReader = new BinaryReader(TcpClient.GetStream());
             while (TcpClient.Connected)
             {
-                var str = binaryReader.ReadString();
+                await stream.ReadAsync(bytes, (int)stream.Position, (int)stream.Length);
+                var str = Convert.ToString(bytes);
+                MessageBox.Show(str);
                 if (str.Equals("start"))
                 {
                     OnGameStarted?.Invoke(this);

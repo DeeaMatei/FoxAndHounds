@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using FoxAndHound.Classes;
 
@@ -14,11 +15,9 @@ namespace FoxAndHounds
         }
 
         private void btnConnect_Click(object sender, System.EventArgs e)
-        {
-            
+        {   
             networkClient.Connect(textIp.Text, Convert.ToInt32(textPort.Text));
-            networkClient.Read();
-            networkClient.Write("hey");
+            Task.Run(()=> networkClient.Read());
         }
     }
 }

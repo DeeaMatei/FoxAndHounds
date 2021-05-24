@@ -45,6 +45,8 @@ namespace FoxAndHounds.Server
             BinaryWriter binaryWriter2 = new BinaryWriter(Client2.GetStream());
             binaryWriter1.Write(start);
             binaryWriter2.Write(start);
+            binaryWriter1.Flush();
+            binaryWriter2.Flush();
         }
 
         public async Task TransferData()
@@ -60,7 +62,8 @@ namespace FoxAndHounds.Server
 
         public void Disconnect()
         {
-            throw new NotImplementedException();
+            Client1.Close();
+            Client2.Close();
         }
 
         public void StopServer()

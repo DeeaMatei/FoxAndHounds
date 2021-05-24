@@ -10,6 +10,7 @@ namespace FoxAndHounds
         public HelpScreen helpScreen;
         public ConnectScreen connectScreen;
         public MainScreen mainScreen;
+        public ChoosePlayer choosePlayer;
 
         public MainMenu()
         {
@@ -41,7 +42,15 @@ namespace FoxAndHounds
 
         private void btnVsComputer_Click(object sender, EventArgs e)
         {
-            mainScreen = new MainScreen(new PcGame());
+            choosePlayer = new ChoosePlayer();
+            if (choosePlayer.ShowDialog() == DialogResult.Yes)
+            {
+                mainScreen = new MainScreen(new PcGame(Player.Fox));
+            }
+            else
+            {
+                mainScreen = new MainScreen(new PcGame(Player.Hounds));
+            }
             mainScreen.FormClosed += OnFormsClosed;
             mainScreen.Show();
             this.Hide();
@@ -73,7 +82,7 @@ namespace FoxAndHounds
         {
             mainScreen = new MainScreen(new LanGame(client));
             mainScreen.FormClosed += OnFormsClosed;
-            connectScreen.Hide();
+            //connectScreen.Hide();
             mainScreen.Show();
             this.Hide();
         }
