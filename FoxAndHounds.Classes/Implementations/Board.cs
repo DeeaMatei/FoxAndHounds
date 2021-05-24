@@ -28,7 +28,6 @@ namespace FoxAndHound.Classes.Implementations
         {
             Redraw();
             Point point = PointToClient(MousePosition);
-            Console.WriteLine(point.X / SquareSize + " " + point.Y / SquareSize);
             Position position = new Position(point.X / SquareSize, point.Y / SquareSize);
             if (BoardLayout.Arrangement.ContainsKey(position))
             {
