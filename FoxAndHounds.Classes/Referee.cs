@@ -89,7 +89,7 @@ namespace FoxAndHound.Classes
             {
                 client.Read();
             }
-            else
+            else if(!data.Equals("fox"))
             {
                 Move move = new Move(data);
                 UpdateLayout(move);
