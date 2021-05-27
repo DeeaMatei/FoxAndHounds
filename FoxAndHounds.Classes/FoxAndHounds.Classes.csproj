@@ -48,10 +48,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Implementations\Fox.cs" />
+    <Compile Include="Implementations\FoxComputer.cs" />
     <Compile Include="Implementations\Hound.cs" />
+    <Compile Include="Implementations\HoundsComputer.cs" />
     <Compile Include="Implementations\LanGame.cs" />
     <Compile Include="Implementations\PcGame.cs" />
     <Compile Include="Interfaces\IBoard.cs" />
+    <Compile Include="Interfaces\IComputer.cs" />
     <Compile Include="Interfaces\IGame.cs" />
     <Compile Include="Interfaces\IPiece.cs" />
     <Compile Include="Layout.cs" />

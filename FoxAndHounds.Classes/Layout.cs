@@ -15,6 +15,10 @@ namespace FoxAndHound.Classes
 
         public void MovePiece(Move move)
         {
+            if (move.Piece == null)
+            {
+                move.Piece = Arrangement[move.Start];
+            }
             Arrangement.Remove(move.Start);
             Arrangement.Add(move.Destination, move.Piece);
         }

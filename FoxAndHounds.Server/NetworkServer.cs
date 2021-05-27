@@ -41,22 +41,30 @@ namespace FoxAndHounds.Server
         public void StartGame()
         {
             string start = "start";
+            string fox = "fox";
+            string hounds = "hounds";
             BinaryWriter binaryWriter1 = new BinaryWriter(Client1.GetStream());
             BinaryWriter binaryWriter2 = new BinaryWriter(Client2.GetStream());
             binaryWriter1.Write(start);
             binaryWriter2.Write(start);
-            binaryWriter1.Flush();
-            binaryWriter2.Flush();
+            binaryWriter1.Write(fox);
+            binaryWriter2.Write(hounds);
         }
 
-        public async Task TransferData()
+        public void TransferData()
         {
             NetworkStream networkStream1 = Client1.GetStream();
             NetworkStream networkStream2 = Client2.GetStream();
             while (Client1.Connected && Client2.Connected)
             {
-                await networkStream1.CopyToAsync(networkStream2);
-                await networkStream2.CopyToAsync(networkStream1);
+                if (networkStream1.DataAvailable)
+                {
+                    networkStream1.CopyToAsync(networkStream2);
+                }
+                else if (networkStream2.DataAvailable)
+                {
+                    networkStream2.CopyToAsync(networkStream1);
+                }
             }
         }
 

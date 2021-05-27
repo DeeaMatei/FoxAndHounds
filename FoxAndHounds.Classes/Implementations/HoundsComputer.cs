@@ -1,4 +1,5 @@
-﻿using FoxAndHound.Classes.Interfaces;
+﻿using System.Windows.Forms;
+using FoxAndHound.Classes.Interfaces;
 
 namespace FoxAndHound.Classes.Implementations
 {
@@ -6,7 +7,7 @@ namespace FoxAndHound.Classes.Implementations
     {
         public void OnComputerMove(Layout layout)
         {
-            throw new System.NotImplementedException();
+            MessageBox.Show("HoundsMove");
         }
     }
 }

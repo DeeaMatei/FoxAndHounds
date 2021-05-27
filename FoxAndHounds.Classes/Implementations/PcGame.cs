@@ -28,11 +28,20 @@ namespace FoxAndHound.Classes.Implementations
         {
             Referee = new Referee(board);
             Referee.Initialize();
+            Referee.OnTurnChange += OnTurnChanged;
         }
 
         public void Start()
         {
             Referee.StartGame();
+        }
+
+        public void OnTurnChanged(Player currentMovingPlayer)
+        {
+            if (currentMovingPlayer != SelectedPlayer)
+            {
+                OnComputerMove?.Invoke(Referee.Layout);
+            }
         }
     }
 }

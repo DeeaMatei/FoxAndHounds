@@ -10,8 +10,8 @@ using System.Windows.Forms;
 
 namespace FoxAndHound.Classes
 {
-    public delegate void DataRead(string data);
-    public delegate void GameStarted(NetworkClient client);
+    public delegate void DataRead(string data, NetworkClient networkClient);
+    public delegate void GameStarted();
 
     public class NetworkClient
     {
@@ -26,37 +26,41 @@ namespace FoxAndHound.Classes
 
         public void Connect(string IP, Int32 port)
         {
-            TcpClient.ConnectAsync(IPAddress.Parse(IP), port);
+            TcpClient.Connect(IPAddress.Parse(IP), port);
         }
 
-        public async Task Write(string data)
+        public void Write(string data)
         {
             if (TcpClient.Connected)
             { // Call Write on move
                 BinaryWriter binaryWriter = new BinaryWriter(TcpClient.GetStream());
                 binaryWriter.Write(data);
+                binaryWriter.Flush();
             }
         }
 
-        public async Task Read()
+        public void Read()
         {
-            var stream = TcpClient.GetStream();
-            var bytes = new byte[10];
             BinaryReader binaryReader = new BinaryReader(TcpClient.GetStream());
-            while (TcpClient.Connected)
+            if (TcpClient.Connected)
             {
-                await stream.ReadAsync(bytes, (int)stream.Position, (int)stream.Length);
-                var str = Convert.ToString(bytes);
-                MessageBox.Show(str);
-                if (str.Equals("start"))
+                var text = binaryReader.ReadString();
+                if (text.Equals("start"))
                 {
-                    OnGameStarted?.Invoke(this);
+                   OnGameStarted?.Invoke();
                 }
                 else
                 {
-                    OnDataRead?.Invoke(str);
+                    OnDataRead?.Invoke(text, this);
                 }
             }
+        }
+
+        public void OnDataSent (Move move)
+        {
+            string data = move.Start.ToString()+"-"+move.Destination.ToString();
+            this.Write(data);
+            this.Read();
         }
     }
 }

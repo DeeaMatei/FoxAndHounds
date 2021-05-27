@@ -5,6 +5,7 @@ using System.Windows.Forms;
 namespace FoxAndHound.Classes
 {
     public delegate void TurnChanged(Player currentMovingPlayer);
+    public delegate void DataSend(Move move);
 
     public class Referee
     {
@@ -13,6 +14,8 @@ namespace FoxAndHound.Classes
         public Player CurrentMovingPlayer { get; set; }
 
         public event TurnChanged OnTurnChange;
+        public event DataSend OnDataSent;
+         
 
         public Referee(IBoard board)
         {
@@ -44,6 +47,7 @@ namespace FoxAndHound.Classes
                     Board.Redraw();
                     CheckEndGame();
                     ChangeTurn();
+                    OnDataSent?.Invoke(moveProposedEventArgs.Move);
                 }
             }
         }
@@ -79,9 +83,20 @@ namespace FoxAndHound.Classes
             OnTurnChange?.Invoke(CurrentMovingPlayer);
         }
 
-        public void OnDataRead(string data)
+        public void OnDataRead(string data, NetworkClient client)
         {
-
+            if (data.Equals("hounds"))
+            {
+                client.Read();
+            }
+            else
+            {
+                Move move = new Move(data);
+                UpdateLayout(move);
+                Board.Redraw();
+                CheckEndGame();
+                ChangeTurn();
+            }
         }
     }
 }

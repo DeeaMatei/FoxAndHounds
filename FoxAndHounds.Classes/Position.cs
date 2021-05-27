@@ -25,5 +25,10 @@
                    X == position.X &&
                    Y == position.Y;
         }
+
+        public override string ToString()
+        {
+            return this.X.ToString()+" "+this.Y.ToString();
+        }
     }
 }

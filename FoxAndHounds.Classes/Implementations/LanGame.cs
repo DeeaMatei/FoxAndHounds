@@ -7,17 +7,14 @@ namespace FoxAndHound.Classes.Implementations
     {
         public Referee Referee { get; set; }
         public Status Outcome { get; set; }
-        public NetworkClient NetworkClient { get; set; }
 
-        public LanGame(NetworkClient client)
+        public LanGame()
         {
-            NetworkClient = client;
         }
 
         public void Initialize(IBoard board)
         {
             Referee = new Referee(board);
-            NetworkClient.OnDataRead += Referee.OnDataRead;
             Referee.Initialize();
         }
 

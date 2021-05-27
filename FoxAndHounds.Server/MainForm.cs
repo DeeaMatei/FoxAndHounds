@@ -47,6 +47,7 @@ namespace FoxAndHounds.Server
             }
             else
             {
+                NetworkServer.Disconnect();
                 NetworkServer.StopServer();
                 NetworkServer = null;
                 labelServerOn.Text = "Server is stopped.";

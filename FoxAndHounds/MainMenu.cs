@@ -11,6 +11,7 @@ namespace FoxAndHounds
         public ConnectScreen connectScreen;
         public MainScreen mainScreen;
         public ChoosePlayer choosePlayer;
+        public NetworkClient networkClient;
 
         public MainMenu()
         {
@@ -66,7 +67,8 @@ namespace FoxAndHounds
 
         private void btnPvpLan_Click(object sender, EventArgs e)
         {
-            connectScreen = new ConnectScreen();
+            networkClient = new NetworkClient();
+            connectScreen = new ConnectScreen(networkClient);
             connectScreen.FormClosed += OnFormsClosed;
             connectScreen.Show();
             connectScreen.networkClient.OnGameStarted += this.OnGameStarted;
@@ -78,11 +80,13 @@ namespace FoxAndHounds
             this.Show();
         }
 
-        public void OnGameStarted(NetworkClient client)
+        public void OnGameStarted()
         {
-            mainScreen = new MainScreen(new LanGame(client));
+            mainScreen = new MainScreen(new LanGame());
+            networkClient.OnDataRead += mainScreen.game.Referee.OnDataRead;
+            mainScreen.game.Referee.OnDataSent += networkClient.OnDataSent;
             mainScreen.FormClosed += OnFormsClosed;
-            //connectScreen.Hide();
+            connectScreen.Hide();
             mainScreen.Show();
             this.Hide();
         }
