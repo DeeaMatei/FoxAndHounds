@@ -22,7 +22,7 @@ namespace FoxAndHound.Classes.Implementations
 
         private Position GetNextMove(Position key, Layout layout)
         {
-            Position bestDestination = new Position(0, 0);
+            Position bestDestination = layout.Arrangement[key].GetAvailableMoves(key, layout)[0];
             return bestDestination;
         }
     }
