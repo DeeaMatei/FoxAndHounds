@@ -41,6 +41,9 @@ namespace FoxAndHound.Classes.Implementations
             if (currentMovingPlayer != SelectedPlayer)
             {
                 OnComputerMove?.Invoke(Referee.Layout);
+                Referee.Board.Redraw();
+                Referee.CheckEndGame();
+                Referee.ChangeTurn();
             }
         }
     }
