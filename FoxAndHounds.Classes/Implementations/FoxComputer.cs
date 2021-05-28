@@ -22,8 +22,46 @@ namespace FoxAndHound.Classes.Implementations
 
         private Position GetNextMove(Position key, Layout layout)
         {
-            Position bestDestination = layout.Arrangement[key].GetAvailableMoves(key, layout)[0];
-            return bestDestination;
+            Tree tree = new Tree(6, layout, typeof(Fox));
+            int bestValue = miniMax(tree.Groot, 6, true);
+            Position bestPosition = new Position(7, 7);
+            foreach (var child in tree.Groot.Children)
+            {
+                if (child.Score == bestValue)
+                {
+                    bestPosition = child.Move.Destination;
+                }
+            }
+            return bestPosition;
+        }
+
+        private int miniMax(Node node, int depth, bool maxPlayer)
+        {
+            if (depth == 0 || node.Children.Count == 0)
+            {
+                return node.Score;
+            }
+            int value;
+            if (maxPlayer)
+            {
+                value = -1000;
+                foreach (var child in node.Children)
+                {
+                    value = Math.Max(value, miniMax(child, depth - 1, false));
+                }
+                node.Score = value;
+                return value;
+            }
+            else
+            {
+                value = 1000;
+                foreach (var child in node.Children)
+                {
+                    value = Math.Min(value, miniMax(child, depth - 1, true));
+                }
+                node.Score = value;
+                return value;
+            }
         }
     }
 }

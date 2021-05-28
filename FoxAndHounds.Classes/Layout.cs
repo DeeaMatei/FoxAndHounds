@@ -31,5 +31,15 @@ namespace FoxAndHound.Classes
             Arrangement.Add(new Position(5, 0), new Hound());
             Arrangement.Add(new Position(7, 0), new Hound());
         }
+
+        public Layout Clone()
+        {
+            var newLayout = new Layout();
+            foreach (var position in this.Arrangement)
+            {
+                newLayout.Arrangement.Add(position.Key, position.Value);
+            }
+            return newLayout;
+        }
     }
 }

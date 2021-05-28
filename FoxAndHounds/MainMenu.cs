@@ -44,13 +44,18 @@ namespace FoxAndHounds
         private void btnVsComputer_Click(object sender, EventArgs e)
         {
             choosePlayer = new ChoosePlayer();
-            if (choosePlayer.ShowDialog() == DialogResult.Yes)
+            var dialogResult = choosePlayer.ShowDialog();
+            if (dialogResult == DialogResult.Yes)
             {
                 mainScreen = new MainScreen(new PcGame(Player.Fox));
             }
-            else
+            else if (dialogResult == DialogResult.No)
             {
                 mainScreen = new MainScreen(new PcGame(Player.Hounds));
+            }
+            else
+            {
+                return;
             }
             mainScreen.FormClosed += OnFormsClosed;
             mainScreen.Show();
