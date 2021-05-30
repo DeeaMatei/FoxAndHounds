@@ -12,38 +12,94 @@ namespace FoxAndHound.Classes
         public Move Move { get; set; }
         public Node Parent { get; set; }
         public List<Node> Children { get; set; }
+        public Type AIType { get; set; }
 
-        public Node()
+        public Node(Type type)
         {
             Children = new List<Node>();
+            AIType = type;
         }
 
-        public Node(Move move, Layout layout, Node parent)
+        public Node(Move move, Layout layout, Node parent, Type aiType)
         {
             Move = move;
             Layout = layout;
             Parent = parent;
-            Score = CalculateScore();
+            Score = CalculateScore(aiType);
             Children = new List<Node>();
+            AIType = aiType;
         }
 
-        public int CalculateScore()
+        public int CalculateScore(Type aiType)
         {
-            if (Move.Piece.GetType().Equals(typeof(Fox)))
+            if (aiType.Equals(typeof(FoxComputer)))
             {
-                return (Move.Destination.Y+Move.Destination.X)*2;
+                if (Move.Piece.GetType().Equals(typeof(Fox)))
+                {
+                    int moveScore = 0;
+                    foreach (var piece in Layout.Arrangement)
+                    {
+                        if (piece.Value.GetType().Equals(typeof(Hound)))
+                        {
+                            if (piece.Key.Y >= Move.Destination.Y)
+                            {
+                                moveScore += 20;
+                            }
+                        }
+                    }
+                    moveScore += (8-Move.Destination.Y)*5;
+                    return moveScore;
+                }
+                else
+                {
+                    int sum = 0;
+                    foreach (var piece in Layout.Arrangement)
+                    {
+                        if (piece.Value.GetType().Equals(typeof(Hound)))
+                        {
+                            if (Move.Destination.Y == piece.Key.Y)
+                            {
+                                sum -= 20;
+                            }
+                            sum -= piece.Key.Y;
+                        }
+                    }
+                    return sum;
+                }
             }
             else
             {
-                int sum = 0;
-                foreach (var piece in Layout.Arrangement)
+                if (Move.Piece.GetType().Equals(typeof(Fox)))
                 {
-                    if (piece.Value.GetType().Equals(typeof(Hound)))
+                    int moveScore = 0;
+                    foreach (var piece in Layout.Arrangement)
                     {
-                        sum += piece.Key.Y;
+                        if (piece.Value.GetType().Equals(typeof(Hound)))
+                        {
+                            if (piece.Key.Y == Move.Destination.Y)
+                            {
+                                moveScore -= 20;
+                            }
+                        }
                     }
+                    moveScore -= (8 - Move.Destination.Y) * 5;
+                    return moveScore;
                 }
-                return sum;
+                else
+                {
+                    int sum = 0;
+                    foreach (var piece in Layout.Arrangement)
+                    {
+                        if (piece.Value.GetType().Equals(typeof(Hound)))
+                        {
+                            if (Move.Destination.Y == piece.Key.Y)
+                            {
+                                sum += 20;
+                            }
+                        }
+                    }
+                    return sum;
+                }
             }
         }
 
@@ -62,7 +118,7 @@ namespace FoxAndHound.Classes
                         newMove.Piece = piece;
                         Layout newLayout = Layout.Clone();
                         newLayout.MovePiece(newMove);
-                        Node child = new Node(newMove, newLayout, this);
+                        Node child = new Node(newMove, newLayout, this, AIType);
                         Children.Add(child);
                     }
                 }

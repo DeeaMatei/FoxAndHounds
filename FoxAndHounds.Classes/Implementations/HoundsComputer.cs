@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 using FoxAndHound.Classes.Interfaces;
 
 namespace FoxAndHound.Classes.Implementations
@@ -9,18 +8,14 @@ namespace FoxAndHound.Classes.Implementations
         public void OnComputerMove(Layout layout)
         {
             Move move = new Move();
-            foreach (var position in layout.Arrangement)
-            {
-                if (position.Value.GetType().Equals(typeof(Hound)) && (position.Value.GetAvailableMoves(position.Key, layout).Count != 0))
-                {
-                    move = GetNextMove(position.Key, layout);
-                }
-            }
+
+            move = GetNextMove(layout);
             layout.MovePiece(move);
         }
-        private Move GetNextMove(Position key, Layout layout)
+
+        private Move GetNextMove(Layout layout)
         {
-            Tree tree = new Tree(6, layout, typeof(Hound));
+            Tree tree = new Tree(6, layout, typeof(Hound), typeof(HoundsComputer));
             int bestValue = miniMax(tree.Groot, 6, true);
             Move bestMove = new Move();
             foreach (var child in tree.Groot.Children)

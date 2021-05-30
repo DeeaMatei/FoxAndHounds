@@ -7,9 +7,9 @@ namespace FoxAndHound.Classes
     {
         public Node Groot { get; set; }
 
-        public Tree(int depth, Layout layout, Type type)
+        public Tree(int depth, Layout layout, Type type, Type aiType)
         {
-            Groot = new Node();
+            Groot = new Node(aiType);
             Groot.Layout = layout.Clone();
             Groot.Move = new Move();
             PopulateTree(Groot, type, depth);
